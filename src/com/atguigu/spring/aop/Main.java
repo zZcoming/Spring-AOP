@@ -15,10 +15,15 @@ public class Main {
 		// 2. 获取bean
 		Calculator calculator = (Calculator) applicationContext.getBean(Calculator.class);
 		// 3. 调用方法
-		int result = calculator.add(3, 5);
-		System.out.println(" --> " + result);
+		calculator.add(3, 5);
+		System.out.println();
 
-		result = calculator.sub(11, 5);
-		System.out.println(" --> " + result);
+		// 本方法正常执行，所以有AfterReturning，没有AfterThrowing
+		calculator.div(100, 5);
+		System.out.println();
+
+		// 本方法异常退出，所以没有AfterReturning，有AfterThrowing
+		calculator.div(100, 0);
+		System.out.println();
 	}
 }
